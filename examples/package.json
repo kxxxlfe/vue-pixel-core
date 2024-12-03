@@ -9,7 +9,8 @@
     "src/*"
   ],
   "scripts": {
-    "vite": "vite"
+    "vite": "vite",
+    "build": "vite build"
   },
   "publishConfig": {
     "access": "public"
