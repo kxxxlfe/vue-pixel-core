@@ -10,6 +10,7 @@ export default ({ mode }) => {
   console.log(resolve(__dirname, 'src/index.ts'))
   const config = {
     publicDir: resolve('./public'), // 静态资源路径
+    base: isProd ? './' : '',
     plugins: [
       pluginVue2(), 
       pluginVue2JSX(), 
@@ -60,6 +61,14 @@ export default ({ mode }) => {
       rollupOptions: {
         // 告诉打包工具 在external配置的 都是外部依赖项  不需要打包
         external: [],
+        output: {
+          // 为入口文件配置不带hash的文件名
+          entryFileNames: `[name].js`,
+          // 为代码分块配置不带hash的文件名
+          chunkFileNames: `[name].js`,
+          // 为静态资源配置不带hash的文件名
+          assetFileNames: `[name].[ext]`
+        }
       },
       sourcemap: isProd ? false : true,
     },
