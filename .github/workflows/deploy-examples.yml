@@ -17,12 +17,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 16
-      - name: 安装依赖
+      - name: npm run build
+        working-directory: ./examples
         run: |
           npm install pnpm@8 -g
           pnpm install
-      - name: npm run build
-        run: npm run build
+          npm run build
 
   deploy:
     needs: build
