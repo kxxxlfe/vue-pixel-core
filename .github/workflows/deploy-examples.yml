@@ -6,8 +6,8 @@ on:
       - 'main'
   workflow_dispatch:
 
-permissins: 
-  constents: write
+permissions: 
+  contents: write
 
 jobs:
   build:
