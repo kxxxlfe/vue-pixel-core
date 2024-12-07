@@ -18,7 +18,9 @@ jobs:
         with:
           node-version: 16
       - name: 安装依赖
-        run: pnpm install
+        run: |
+          npm install pnpm@8 -g
+          pnpm install
       - name: npm run build
         run: npm run build
 
