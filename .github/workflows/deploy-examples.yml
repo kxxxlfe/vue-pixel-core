@@ -3,7 +3,7 @@ name: Deploy vue-pixel-core examples
 on:
   push:
     branches:
-      -main
+      - 'main'
   workflow_dispatch
 
 permissins: 
