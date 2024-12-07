@@ -1,0 +1,1 @@
+body,html{width:100%;height:100%;overflow:hidden}#app{width:100%;font-family:Avenir,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;height:100vh;display:flex}#app .left-toolbar{width:200px;height:100%;background-color:#333}#app .palette-wrapper{flex:1}#app .right-toolbar{width:200px;height:100%;background-color:#333}
