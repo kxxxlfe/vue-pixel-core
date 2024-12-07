@@ -23,6 +23,7 @@ jobs:
           npm install pnpm@8 -g
           pnpm install
           npm run build
+          ls -l
 
   deploy:
     needs: build
