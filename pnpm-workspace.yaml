@@ -3,5 +3,4 @@ packages:
   - 'platforms/*'
   # exclude packages that are inside test directories
   - '!**/test/**'
-  - '!**/examples/**'
   - '!packages/*'
