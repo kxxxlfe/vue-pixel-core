@@ -17,6 +17,7 @@ export const usePixFunc = function ({ id }: { id?: string } = {}) {
     innerStage.value = getData('component')?.stage?.getNode()
     return innerStage.value
   }
+  const getHistoryDo = () => getData('component')?.historyDo
 
   // 将棋盘重置到容器中间，缩放到合适大小
   const { rowNum, colNum, grid, border } = useConfig({ id })
@@ -61,5 +62,14 @@ export const usePixFunc = function ({ id }: { id?: string } = {}) {
     return area.toDataURL(...args)
   }
 
-  return { getStage, stage: innerStage, centerAndPosition, scaleByCenter, positionByDelta, exportImage, isRenderred }
+  return {
+    getStage,
+    getHistoryDo,
+    stage: innerStage,
+    centerAndPosition,
+    scaleByCenter,
+    positionByDelta,
+    exportImage,
+    isRenderred,
+  }
 }
