@@ -23,7 +23,7 @@ jobs:
           npm install pnpm@8 -g
           pnpm install
       - name: build
-        working-directory: ./
+        working-directory: ./platforms/examples
         run: |
           npm run build
       - name: deploy
