@@ -6,7 +6,7 @@ on:
       - 'main'
   workflow_dispatch:
 
-permissions: 
+permissions:
   contents: write
 
 jobs:
@@ -17,14 +17,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 16
-      - name: npm run build
-        working-directory: ./examples
+      - name: install
+        working-directory: ./
         run: |
           npm install pnpm@8 -g
           pnpm install
+      - name: build
+        working-directory: ./
+        run: |
           npm run build
       - name: deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: examples/dist
+          folder: platforms/examples/dist
