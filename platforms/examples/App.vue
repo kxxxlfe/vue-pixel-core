@@ -11,7 +11,14 @@
         @change="onChangeData"
       />
     </div>
-    <div class="right-toolbar"></div>
+    <div class="right-toolbar">
+      <a
+        href="https://stackblitz.com/~/github.com/kxxxlfe/vue-pixel-core?file=platforms/examples/App.vue"
+        target="_blank"
+      >
+        查看代码
+      </a>
+    </div>
   </div>
 </template>
 

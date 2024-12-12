@@ -17,7 +17,7 @@
     "konva": "^9.3.15"
   },
   "dependencies": {
-    "@kxxxl-front-end/vue-pixel-core": "^0.0.5",
+    "@kxxxl-front-end/vue-pixel-core": "^0.0.6",
     "lodash-es": "^4.17.21",
     "vue": "^2.7.16"
   },
