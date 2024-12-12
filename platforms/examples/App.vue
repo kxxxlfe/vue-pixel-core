@@ -12,12 +12,14 @@
       />
     </div>
     <div class="right-toolbar">
-      <a
-        href="https://stackblitz.com/~/github.com/kxxxlfe/vue-pixel-core?file=platforms/examples/App.vue"
-        target="_blank"
-      >
-        查看代码
-      </a>
+      <div class="code-link">
+        <a
+          href="https://stackblitz.com/~/github.com/kxxxlfe/vue-pixel-core?file=platforms/examples/App.vue"
+          target="_blank"
+        >
+          查看代码(stackblitz)
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -67,6 +69,8 @@ html {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 #app {
   width: 100%;
@@ -89,6 +93,15 @@ html {
     width: 200px;
     height: 100%;
     background-color: #333;
+  }
+}
+.code-link {
+  text-align: right;
+  padding: 8px;
+  a {
+    font-size: 14px;
+    color: #91caff;
+    font-weight: bold;
   }
 }
 </style>
