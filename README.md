@@ -1,6 +1,6 @@
 # vue-pixel-core
 
-<h2 align="center"> 基于`Vue`和`konva`的像素图编辑基础组件 </h2>
+<h2 align="center"> 基于`Vue@2.7`和`konva`的像素图编辑基础组件 </h2>
 <p align="center">`vue-pixel-core` 用于实现像素编辑器的基础组件。项目不实现具体的编辑功能，只提供绘制和必要的hook</p>
 
 ## Quick Start
@@ -40,31 +40,9 @@ export default defineComponent({
 
 [地址](https://kxxxlfe.github.io/vue-pixel-core/)
 
-## 数据定义
-
-> 为了实现多层编辑，需要一个3维数组格式如下
-
-```typescript
-// 每个格子数据
-interface PixelGridData {
-  color?: string
-  disabled?: boolean
-  [key: string]: any
-}
-
-// 每一层数据
-interface PixelLayerData {
-  id: string
-  name: string
-  zIndex: number
-  grids: PixelGridData[][]
-}
-
-// pixelData格式
-type PixelData = PixelLayerData[]
-```
-
 ## Props
+
+> 参数格式如下，具体用法详见 [Props详细](#props-head)
 
 | Name                        | Description                                    | Default                                                |
 |-----------------------------|------------------------------------------------|--------------------------------------------------------|
@@ -72,12 +50,14 @@ type PixelData = PixelLayerData[]
 | [pixelData](#api-pixelData) | 像素图数据                                     | `[]`                                                   |
 | [grid](#api-grid)           | 像素格子相关配置                               | `{ size: 20, render: null }`                           |
 | [border](#api-border)       | 边框相关配置                                   | `{ size: 1, color: '#595959', groupColor: '#bfbfbf',}` |
-| showBaseline                | 是否显示棋盘基线以及格子数字标识               | true                                                   |
+| useBaseline                 | 是否显示棋盘基线以及格子数字标识               | true                                                   |
+| useUndo                     | 是否支持撤销/重做，会占用快捷键                 | false                                                  |
 | layout                      | 棋盘宽高数据；不设置会使用当前棋盘容器dom的宽高 | 无                                                     |
-| enableUndo                  | 是否支持撤销/重做，会占用快捷键                 | false                                                  |
-| groupInfo                   | 矩阵内的格子为一组，可以按组展示                | 默认不分组：`groupInfo: { row: 0, col: 0 },`            |
+| groupInfo                   | 矩阵内的格子为一组，可以按组展示                | 默认不分组：`{ row: 0, col: 0 }`            |
 
-<details><summary><b>Props详细<b></summary>
+<details>
+
+<summary id="props-head"><b>Props详细<b></summary>
 
 <section id="api-id">
   <h4>id</h4>
@@ -178,5 +158,61 @@ type PixelData = PixelLayerData[]
   ```
 </section>
 
-
 </details>
+
+## Method and Field
+
+> 所有的方法与字段都通过 `usePixFunc` 获取，示例如下
+
+```typescript
+const { getStage, scaleByCenter, positionByDelta, centerAndPosition } = usePixFunc({ id: pixelId })
+```
+
+| Name              | Description                                                   | Type                                                                                                  |
+|-------------------|---------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| getStage          | 获取`konva`的`stage`对象                                      | [Konva.Stage](https://konvajs.org/docs/overview.html)                                                 |
+| getHistoryDo      | 仅在`useUndo`时返回有效值                                     | `() => { undo, redo, undoStatus, redoStatus }`                                                        |
+| centerAndPosition | 棋盘移动到容器中心，宽高尽量充满容器                           | `() => void`                                                                                          |
+| scaleByCenter     | 以棋盘为中心，放大缩小                                         | `({ newScale: number }) => void`                                                                      |
+| positionByDelta   | 平移棋盘位置                                                  | `({ deltaX?: number; deltaY?: number; }) => void`                                                     |
+| exportImage       | 当前棋盘截图                                                  | `async (args: any) => string`; [args详见](https://konvajs.org/api/Konva.Group.html#toDataURL__anchor) |
+| isRenderred       | 棋盘是否已经渲染完成；一些方法需要等待渲染完成才能返回有效内容 | `Promise<any>`                                                                                        |
+
+## Events
+
+> hook主要用于开发基于棋盘的交互，通过 `usePixEvent` 获取 `when` 使用；示例如下
+
+```typescript
+const { when } = usePixEvent({ id: pixelId })
+when({
+  onGridHover({ r, c, grid }) {
+    state.currGrid = { r, c, groupId: grid.groupId }
+  },
+})
+```
+
+| Name                                  | Description                                | Hook Data                                       |
+|---------------------------------------|--------------------------------------------|-------------------------------------------------|
+| onGridHover                           | 指针经过格子时触发，一个grid触发一次        | `{ r, c, grid }`                                |
+| [onGridPressed](#event-onGridPressed) | 指针按下时，经过grid时触发，一个grid触发一次 | `{ evt, r, c, currGrid, passByGrids, layerId }` |
+
+<details>
+
+<summary id="props-head"><b>Events详细<b></summary>
+
+<section id="event-onGridPressed">
+  <h4>onGridPressed</h4> 
+  
+  参数说明
+
+  ```typescript
+  type GridPressedParams = {
+    evt: PointerEvent; // 原始事件
+    r: number; // 格子行列数
+    c: number;
+    currGrid: PixelGridData; // 当前触发的格子数据
+    layerId: string | number; // 当前触发的格子所在layer
+    passGrids: PixelGridData[]; // 本次按下后，已经过的格子数组
+  };
+  ```
+</section>
