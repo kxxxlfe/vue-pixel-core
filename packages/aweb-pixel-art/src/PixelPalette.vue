@@ -4,7 +4,7 @@
       <KLayer>
         <KGroup id="pixelBoardArea">
           <PixelBackground />
-          <PixelBaseLine v-if="showBaseline" />
+          <PixelBaseLine v-if="useBaseline" />
           <PixelLayer v-for="layer in innerLayers" :key="layer.id" :layerId="layer.id" :grids="layer.grids" />
         </KGroup>
       </KLayer>
@@ -52,8 +52,8 @@ export default defineComponent({
     border: { type: Object as PropType<Partial<PixelCommonConfig['border']>> },
     groupInfo: { type: Object as PropType<Partial<PixelCommonConfig['groupInfo']>> },
     layout: { type: Object as PropType<{ width: number; height: number }> },
-    showBaseline: { type: Boolean, default: true },
-    enableUndo: { type: Boolean, default: false },
+    useBaseline: { type: Boolean, default: true },
+    useUndo: { type: Boolean, default: false },
   },
   model: {
     prop: 'pixelData',
@@ -146,12 +146,13 @@ export default defineComponent({
     })
 
     // redo/undo
-    if (props.enableUndo) {
+    let historyDo = null as any
+    if (props.useUndo) {
       const { pixelHistory } = usePixelUndo()
-      useUndo({ editRecord: pixelHistory, isEnable: ref(true) })
+      historyDo = useUndo({ editRecord: pixelHistory, isEnable: ref(true) })
     }
 
-    return { wrapperRef, innerLayers, stageConfig, stage, pixelPaletteId }
+    return { wrapperRef, innerLayers, stageConfig, stage, pixelPaletteId, historyDo }
   },
 })
 </script>

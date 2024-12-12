@@ -1,7 +1,7 @@
 # vue-pixel-core
 
-#### 基于`Vue@2.7`和`konva`的像素图编辑基础组件
-#### 不实现具体的编辑工具，只提供绘制功能和必要的hook
+<h2 align="center"> 基于`Vue@2.7`和`konva`的像素图编辑基础组件 </h2>
+<p align="center">不实现具体的编辑工具，只提供绘制和必要的hook</p>
 
 ## Quick Start
 
@@ -53,11 +53,11 @@ export default defineComponent({
 | useBaseline                 | 是否显示棋盘基线以及格子数字标识               | true                                                   |
 | useUndo                     | 是否支持撤销/重做，会占用快捷键                 | false                                                  |
 | layout                      | 棋盘宽高数据；不设置会使用当前棋盘容器dom的宽高 | 无                                                     |
-| groupInfo                   | 矩阵内的格子为一组，可以按组展示                | 默认不分组：`{ row: 0, col: 0 }`            |
+| groupInfo                   | 矩阵内的格子为一组，可以按组展示                | 默认不分组：`{ row: 0, col: 0 }`                        |
 
 <details>
 
-<summary id="props-head"><b>Props详细</b></summary>
+<summary id="props-head"><b>Props详细<b></summary>
 
 <section id="api-id">
   <h4>id</h4>
@@ -198,7 +198,7 @@ when({
 
 <details>
 
-<summary id="props-head"><b>Events详细</b></summary>
+<summary id="props-head"><b>Events详细<b></summary>
 
 <section id="event-onGridPressed">
   <h4>onGridPressed</h4> 

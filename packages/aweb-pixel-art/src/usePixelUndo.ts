@@ -75,7 +75,6 @@ export const usePixelUndo = function () {
 
   const pixelHistory = new PixelEditRecord({ pixelData })
   pixelHistory.record('pixelRecord') // 记录初始状态
-  setData('pixelHistory', pixelHistory)
 
   const triggerRecord = debounce(() => {
     pixelHistory.record('pixelRecord')

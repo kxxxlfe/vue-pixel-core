@@ -1,6 +1,7 @@
 {
-  "name": "vue-pixel-core-examples",
-  "version": "0.0.1",
+  "name": "@aweb/pkg-pixel-art",
+  "private": true,
+  "version": "0.0.6",
   "description": "",
   "main": "src/index.ts",
   "module": "src/index.ts",
@@ -9,26 +10,35 @@
     "src/*"
   ],
   "scripts": {
-    "vite": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "pub": "node scripts/publish.mjs"
   },
   "publishConfig": {
     "access": "public"
   },
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "peerDependencies": {
+    "lodash-es": "^4.17.21",
+    "vue": "^2.7.16",
     "konva": "^9.3.15"
   },
   "dependencies": {
-    "@kxxxl-front-end/vue-pixel-core": "^0.0.5",
-    "lodash-es": "^4.17.21",
-    "vue": "^2.7.16"
+    "@aweb/pkg-common": "workspace:*",
+    "@aweb/pkg-ui": "workspace:*",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "moment": "^2.30.1",
     "vite": "^5.3.3",
     "@vitejs/plugin-basic-ssl": "^1.0.2",
     "@vitejs/plugin-vue2": "^2.3.1",
     "@vitejs/plugin-vue2-jsx": "^1.1.1",
     "vite-plugin-commonjs": "^0.10.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kxxxlfe/vue-pixel-core.git"
   }
 }

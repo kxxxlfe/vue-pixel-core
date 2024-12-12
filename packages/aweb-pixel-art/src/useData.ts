@@ -2,19 +2,22 @@ import { Ref, onMounted, shallowRef, nextTick, inject, getCurrentInstance, provi
 import { v4 } from 'uuid'
 import type Konva from 'konva'
 
+import { EditRecord } from '@aweb/pkg-common'
 import type { PixelWhenData } from './use/useEvent'
 import type { PixelCommonConfig } from './useConfig'
-import { EditRecord } from '@aweb/pkg-common'
 import PixelPalette from './PixelPalette.vue'
 
 type PixelPaletteInst = InstanceType<typeof PixelPalette>
 
 // 棋盘数据，类似store
 type PixelCommonData = {
+  pixelData: {
+    get: () => Ref<PixelPaletteInst['pixelData']>
+    set: (args: any) => void
+  }
   config: PixelCommonConfig
   component: PixelPaletteInst
   when: Partial<PixelWhenData>
-  pixelHistory: EditRecord
   layers: { layerId: string; layer: Konva.Layer }[]
   renderFlags: any[]
 }
@@ -33,7 +36,10 @@ export const useData = function ({ id }: { id?: string } = {}) {
   }
 
   const getData = function <T extends keyof PixelCommonData>(key: T) {
-    return paletteMap[pid]?.[key]
+    if (!paletteMap[pid]) {
+      paletteMap[pid] = {} as any
+    }
+    return paletteMap[pid][key]
   }
   const setData = function (key, data) {
     if (!paletteMap[pid]) {

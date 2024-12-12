@@ -90,7 +90,7 @@ export default defineComponent({
       const gsize = grid.value.size
       return arr.map((i, idx) => {
         return {
-          x: -8,
+          x: -12,
           y: idx * (gsize + bsize) + bsize,
           text: idx + 1,
         }
@@ -104,7 +104,7 @@ export default defineComponent({
       return arr.map((i, idx) => {
         return {
           x: idx * (gsize + bsize) + bsize,
-          y: -10,
+          y: -12,
           text: idx + 1,
         }
       })
