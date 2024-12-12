@@ -12,9 +12,9 @@ export default ({ mode }) => {
     publicDir: resolve('./public'), // 静态资源路径
     base: isProd ? './' : '',
     plugins: [
-      pluginVue2(), 
-      pluginVue2JSX(), 
-      pluginBasicSsl()
+      pluginVue2(),
+      pluginVue2JSX(),
+      // pluginBasicSsl()
     ].filter(f => !!f),
     define: {
       'process.env': {
@@ -67,8 +67,8 @@ export default ({ mode }) => {
           // 为代码分块配置不带hash的文件名
           chunkFileNames: `[name].js`,
           // 为静态资源配置不带hash的文件名
-          assetFileNames: `[name].[ext]`
-        }
+          assetFileNames: `[name].[ext]`,
+        },
       },
       sourcemap: isProd ? false : true,
     },
