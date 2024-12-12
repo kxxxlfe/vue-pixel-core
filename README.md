@@ -1,7 +1,7 @@
 # vue-pixel-core
 
 <h2 align="center"> 基于`Vue@2.7`和`konva`的像素图编辑基础组件 </h2>
-<p align="center">`vue-pixel-core` 用于实现像素编辑器的基础组件。项目不实现具体的编辑功能，只提供绘制和必要的hook</p>
+<p align="center">不实现具体的编辑工具，只提供绘制和必要的hook</p>
 
 ## Quick Start
 
