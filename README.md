@@ -1,7 +1,7 @@
 # vue-pixel-core
 
-<h2 align="center"> 基于`Vue@2.7`和`konva`的像素图编辑基础组件 </h2>
-<p align="center">不实现具体的编辑工具，只提供绘制和必要的hook</p>
+#### 基于`Vue@2.7`和`konva`的像素图编辑基础组件
+#### 不实现具体的编辑工具，只提供绘制功能和必要的hook
 
 ## Quick Start
 
@@ -57,7 +57,7 @@ export default defineComponent({
 
 <details>
 
-<summary id="props-head"><b>Props详细<b></summary>
+<summary id="props-head"><b>Props详细</b></summary>
 
 <section id="api-id">
   <h4>id</h4>
@@ -198,7 +198,7 @@ when({
 
 <details>
 
-<summary id="props-head"><b>Events详细<b></summary>
+<summary id="props-head"><b>Events详细</b></summary>
 
 <section id="event-onGridPressed">
   <h4>onGridPressed</h4> 
