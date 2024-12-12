@@ -4,6 +4,7 @@
   "private": true,
   "description": "",
   "scripts": {
+    "start": "cd ./platforms/examples && npm run vite",
     "ready": "npm install pnpm@8 rimraf@latest -g && npm run bootstrap",
     "bootstrap": "pnpm install",
     "clean": "pnpm --recursive exec -- npx rimraf node_modules && npx rimraf node_modules"
