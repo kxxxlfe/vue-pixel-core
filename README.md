@@ -91,12 +91,15 @@ type PixelData = PixelLayerData[]
       <td>grid</td>
       <td>像素格子相关配置</td>
       <td>
-        ```
-          {
-            size: number; // 格子尺寸，默认20
-            render: VueComponent; // 自定义渲染格子，传递一个vue组件
-          }
-        ```
+        <details>
+          <summary><b>详细</b></summary>
+            ```
+              {
+                size: number; // 格子尺寸，默认20
+                render: VueComponent; // 自定义渲染格子，传递一个vue组件
+              }
+            ```
+        </details>
       </td>
     </tr>
   </tbody>
