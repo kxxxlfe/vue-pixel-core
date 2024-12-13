@@ -53,7 +53,7 @@ export default defineComponent({
 | useBaseline                 | 是否显示棋盘基线以及格子数字标识               | true                                                   |
 | useUndo                     | 是否支持撤销/重做，会占用快捷键                 | false                                                  |
 | layout                      | 棋盘宽高数据；不设置会使用当前棋盘容器dom的宽高 | 无                                                     |
-| groupInfo                   | 矩阵内的格子为一组，可以按组展示                | 默认不分组：`{ row: 0, col: 0 }`            |
+| groupInfo                   | 矩阵内的格子为一组，可以按组展示                | 默认不分组：`{ row: 0, col: 0 }`                        |
 
 <details>
 
@@ -74,6 +74,7 @@ export default defineComponent({
  <h4>pixelData</h4>
 
   - 为了实现多层编辑，需要一个3维数组格式如下
+  - [样例数据](https://github.com/kxxxlfe/vue-pixel-core/blob/main/platforms/examples/data.json)
 
   ```typescript
   // 每个格子数据
