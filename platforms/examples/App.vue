@@ -1,6 +1,12 @@
 <template>
   <div id="app">
-    <div class="left-toolbar">
+    <div class="top-toolbar">
+      <a
+        href="https://stackblitz.com/~/github.com/kxxxlfe/vue-pixel-core?file=platforms/examples/App.vue"
+        target="_blank"
+      >
+        查看代码(stackblitz)
+      </a>
       <PixelTool :pixelData="pixelData" :pixelId="pixelId" />
     </div>
     <div class="palette-wrapper">
@@ -12,16 +18,6 @@
         :enableUndo="true"
         @change="onChangeData"
       />
-    </div>
-    <div class="right-toolbar">
-      <div class="code-link">
-        <a
-          href="https://stackblitz.com/~/github.com/kxxxlfe/vue-pixel-core?file=platforms/examples/App.vue"
-          target="_blank"
-        >
-          查看代码(stackblitz)
-        </a>
-      </div>
     </div>
   </div>
 </template>
@@ -83,28 +79,21 @@ html {
   height: 100vh;
 
   display: flex;
+  flex-direction: column;
 
-  .left-toolbar {
-    width: 200px;
-    height: 100%;
+  .top-toolbar {
+    height: 200px;
     background-color: #333;
+    flex-shrink: 0;
+
+    a {
+      font-size: 14px;
+      color: #91caff;
+      font-weight: bold;
+    }
   }
   .palette-wrapper {
     flex: 1;
-  }
-  .right-toolbar {
-    width: 200px;
-    height: 100%;
-    background-color: #333;
-  }
-}
-.code-link {
-  text-align: right;
-  padding: 8px;
-  a {
-    font-size: 14px;
-    color: #91caff;
-    font-weight: bold;
   }
 }
 </style>

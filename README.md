@@ -57,7 +57,7 @@ export default defineComponent({
 
 <details>
 
-<summary id="props-head"><b>Props详细</b></summary>
+<summary id="props-head"><h3>Props详细</h3></summary>
 
 <section id="api-id">
   <h4>id</h4>
@@ -199,12 +199,12 @@ when({
 
 <details>
 
-<summary id="props-head"><b>Events详细</b></summary>
+<summary id="props-head"><h3>Events详细</h3></summary>
 
 <section id="event-onGridPressed">
   <h4>onGridPressed</h4> 
   
-  参数说明
+  - 参数说明
 
   ```typescript
   type GridPressedParams = {
@@ -216,4 +216,18 @@ when({
     passGrids: PixelGridData[]; // 本次按下后，已经过的格子数组
   };
   ```
+
+  - 画笔实现范例
+
+  ```typescript
+  const { when } = usePixEvent({ id: pixelId })
+
+  when({
+    onGridPressed({ evt, r, c, currGrid, passByGrids, layerId }) {
+      currGrid.color = toolForm.value.color
+    },
+  })
+  ```
+
+  - [其他工具示例-stackblitz](https://stackblitz.com/~/github.com/kxxxlfe/vue-pixel-core?file=platforms/examples/App.vue)
 </section>
