@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <div class="left-toolbar"></div>
+    <div class="left-toolbar">
+      <PixelTool :pixelData="pixelData" :pixelId="pixelId" />
+    </div>
     <div class="palette-wrapper">
       <PixelPalette
         class="palette"
@@ -29,10 +31,11 @@ import { defineComponent, reactive, toRefs, ref } from 'vue'
 import { PixelPalette } from '@kxxxl-front-end/vue-pixel-core'
 import { set } from 'lodash-es'
 
+import PixelTool from './PixelTool/PixelTool.vue'
 import data from './data.json'
 
 export default defineComponent({
-  components: { PixelPalette },
+  components: { PixelPalette, PixelTool },
   setup(props, { emit }) {
     const state = reactive({
       pixelId: Date.now() + '',

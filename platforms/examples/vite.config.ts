@@ -31,8 +31,8 @@ export default ({ mode }) => {
     resolve: {
       extensions: ['.js', '.vue', '.json', '.ts', '.jsx', '.tsx'],
       alias: [
-        { find: '@', replacement: resolve('src') },
-        { find: '~@', replacement: resolve('src') },
+        { find: '@', replacement: resolve('./') },
+        { find: '~@', replacement: resolve('./') },
         { find: /^vue$/, replacement: resolve('./node_modules/vue/dist/vue.runtime.esm.js') },
         { find: 'lodash-es', replacement: resolve('./node_modules/lodash-es') },
       ],
