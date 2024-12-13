@@ -1,6 +1,14 @@
 <template>
   <div id="app">
-    <div class="left-toolbar"></div>
+    <div class="top-toolbar">
+      <a
+        href="https://stackblitz.com/~/github.com/kxxxlfe/vue-pixel-core?file=platforms/examples/App.vue"
+        target="_blank"
+      >
+        查看代码(stackblitz)
+      </a>
+      <PixelTool :pixelData="pixelData" :pixelId="pixelId" />
+    </div>
     <div class="palette-wrapper">
       <PixelPalette
         class="palette"
@@ -11,7 +19,6 @@
         @change="onChangeData"
       />
     </div>
-    <div class="right-toolbar"></div>
   </div>
 </template>
 
@@ -20,10 +27,11 @@ import { defineComponent, reactive, toRefs, ref } from 'vue'
 import { PixelPalette } from '@kxxxl-front-end/vue-pixel-core'
 import { set } from 'lodash-es'
 
+import PixelTool from './PixelTool/PixelTool.vue'
 import data from './data.json'
 
 export default defineComponent({
-  components: { PixelPalette },
+  components: { PixelPalette, PixelTool },
   setup(props, { emit }) {
     const state = reactive({
       pixelId: Date.now() + '',
@@ -60,6 +68,8 @@ html {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 #app {
   width: 100%;
@@ -69,19 +79,21 @@ html {
   height: 100vh;
 
   display: flex;
+  flex-direction: column;
 
-  .left-toolbar {
-    width: 200px;
-    height: 100%;
+  .top-toolbar {
+    height: 200px;
     background-color: #333;
+    flex-shrink: 0;
+
+    a {
+      font-size: 14px;
+      color: #91caff;
+      font-weight: bold;
+    }
   }
   .palette-wrapper {
     flex: 1;
-  }
-  .right-toolbar {
-    width: 200px;
-    height: 100%;
-    background-color: #333;
   }
 }
 </style>

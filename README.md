@@ -53,11 +53,11 @@ export default defineComponent({
 | useBaseline                 | 是否显示棋盘基线以及格子数字标识               | true                                                   |
 | useUndo                     | 是否支持撤销/重做，会占用快捷键                 | false                                                  |
 | layout                      | 棋盘宽高数据；不设置会使用当前棋盘容器dom的宽高 | 无                                                     |
-| groupInfo                   | 矩阵内的格子为一组，可以按组展示                | 默认不分组：`{ row: 0, col: 0 }`            |
+| groupInfo                   | 矩阵内的格子为一组，可以按组展示                | 默认不分组：`{ row: 0, col: 0 }`                        |
 
 <details>
 
-<summary id="props-head"><b>Props详细</b></summary>
+<summary id="props-head"><h3>Props详细</h3></summary>
 
 <section id="api-id">
   <h4>id</h4>
@@ -74,6 +74,7 @@ export default defineComponent({
  <h4>pixelData</h4>
 
   - 为了实现多层编辑，需要一个3维数组格式如下
+  - [样例数据](https://github.com/kxxxlfe/vue-pixel-core/blob/main/platforms/examples/data.json)
 
   ```typescript
   // 每个格子数据
@@ -198,12 +199,12 @@ when({
 
 <details>
 
-<summary id="props-head"><b>Events详细</b></summary>
+<summary id="props-head"><h3>Events详细</h3></summary>
 
 <section id="event-onGridPressed">
   <h4>onGridPressed</h4> 
   
-  参数说明
+  - 参数说明
 
   ```typescript
   type GridPressedParams = {
@@ -215,4 +216,18 @@ when({
     passGrids: PixelGridData[]; // 本次按下后，已经过的格子数组
   };
   ```
+
+  - 画笔实现范例
+
+  ```typescript
+  const { when } = usePixEvent({ id: pixelId })
+
+  when({
+    onGridPressed({ evt, r, c, currGrid, passByGrids, layerId }) {
+      currGrid.color = toolForm.value.color
+    },
+  })
+  ```
+
+  - [其他工具示例-stackblitz](https://stackblitz.com/~/github.com/kxxxlfe/vue-pixel-core?file=platforms/examples/App.vue)
 </section>
