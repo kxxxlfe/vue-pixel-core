@@ -3,6 +3,10 @@
 #### 基于`Vue@2.7`和`konva`的像素图编辑基础组件
 #### 不实现具体的编辑工具，只提供绘制功能和必要的hook
 
+## Demo
+
+[地址](https://kxxxlfe.github.io/vue-pixel-core/)
+
 ## Quick Start
 
 **Step1. Install**
@@ -35,10 +39,6 @@ export default defineComponent({
 ```
 
 <br/>
-
-## Demo
-
-[地址](https://kxxxlfe.github.io/vue-pixel-core/)
 
 ## Props
 
