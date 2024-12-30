@@ -216,8 +216,11 @@ when({
     passGrids: PixelGridData[]; // 本次按下后，已经过的格子数组
   };
   ```
+</section>
 
-  - 画笔实现范例
+## Examples
+
+  - 画笔实现
 
   ```typescript
   const { when } = usePixEvent({ id: pixelId })
@@ -230,4 +233,5 @@ when({
   ```
 
   - [其他工具示例-stackblitz](https://stackblitz.com/~/github.com/kxxxlfe/vue-pixel-core?file=platforms/examples/App.vue)
-</section>
+
+
